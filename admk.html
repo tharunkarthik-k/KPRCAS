@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Between Two Vertical Colors</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      
+      justify-content: center;
+      align-items: flex-start;
+      background: #fff;
+    }
+    .container {
+      position: relative;
+      width: 1600px;
+      height: 700px;
+      margin-top: 0px; /* space for image overlap */
+      display: flex;
+      flex-direction: column;
+    
+    }
+
+    .top-color, .bottom-color {
+      flex: 1;
+    }
+
+    .top-color {
+      background-color: #000000; /* Blue */
+    }
+
+    .bottom-color {
+      background-color: #ff0000; /* Red */
+    }
+
+    .center-image {
+      position: absolute;
+      top: 50%;           /* halfway down the container */
+      left: 50%;
+      transform: translate(-50%, -50%); /* center exactly */
+      width: 500px;
+      padding: 50px;
+      
+      
+    }
+
+    .center-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="top-color"></div>
+    <div class="bottom-color"></div>
+
+    <div class="center-image">
+      <img src="/download-Photoroom.png" alt="Centered Image" />
+    </div>
+  </div>
+
+</body>
+</html>
