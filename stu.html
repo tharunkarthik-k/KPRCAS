@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      padding: 6px;
+      margin-top: 4px;
+      width: 200px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 15px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter Student Details</h2>
+
+  <form id="studentForm">
+    <label for="name">Student Name:</label>
+    <input type="text" id="name" required />
+
+    <label for="rollno">Roll Number:</label>
+    <input type="text" id="rollno" required />
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" required />
+
+    <label for="batch">Batch:</label>
+    <input type="text" id="batch" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('studentForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form reload
+
+      const name = document.getElementById('name').value.trim();
+      const rollno = document.getElementById('rollno').value.trim();
+      const department = document.getElementById('department').value.trim();
+      const batch = document.getElementById('batch').value.trim();
+
+      if (!name || !rollno || !department || !batch) {
+        resultDiv.textContent = 'Please fill out all fields.';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      resultDiv.style.color = 'green';
+      resultDiv.innerHTML = `
+        Student Name: ${name} <br/>
+        Roll Number: ${rollno} <br/>
+        Department: ${department} <br/>
+        Batch: ${batch}
+      `;
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>

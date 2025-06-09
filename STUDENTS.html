@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Details Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 30px;
+      background: #f0f4f8;
+      color: #333;
+    }
+    h2 {
+      color: #004085;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #003366;
+    }
+    input {
+      padding: 8px;
+      margin-top: 5px;
+      width: 250px;
+      border: 2px solid #0069d9;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      border-color: #0056b3;
+      outline: none;
+      background-color: #e7f1ff;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 18px;
+      max-width: 400px;
+      background-color: #d1ecf1;
+      color: #0c5460;
+      box-shadow: 0 0 10px rgba(12, 84, 96, 0.3);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #result.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      box-shadow: 0 0 10px rgba(114, 28, 36, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter Student Details</h2>
+
+  <form id="studentForm">
+    <label for="name">Student Name:</label>
+    <input type="text" id="name" required />
+
+    <label for="rollno">Roll Number:</label>
+    <input type="text" id="rollno" required />
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" required />
+
+    <label for="batch">Batch:</label>
+    <input type="text" id="batch" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('studentForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const rollno = document.getElementById('rollno').value.trim();
+      const department = document.getElementById('department').value.trim();
+      const batch = document.getElementById('batch').value.trim();
+
+      if (!name || !rollno || !department || !batch) {
+        resultDiv.textContent = 'Please fill out all fields.';
+        resultDiv.classList.add('error');
+        return;
+      }
+
+      resultDiv.classList.remove('error');
+      resultDiv.innerHTML = `
+        Student Name: ${name} <br/>
+        Roll Number: ${rollno} <br/>
+        Department: ${department} <br/>
+        Batch: ${batch}
+      `;
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>

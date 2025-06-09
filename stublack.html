@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Details - Themed</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #05161A; /* background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: #072E33;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      max-width: 400px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    h2 {
+      color: #6DA5C0;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #6DA5C0;
+      text-align: left;
+    }
+    input {
+      padding: 8px;
+      margin-top: 5px;
+      width: 100%;
+      border: 2px solid #0F969C;
+      border-radius: 6px;
+      font-size: 16px;
+      background-color: #0C7075;
+      color: #ffffff;
+      box-sizing: border-box;
+    }
+    input:focus {
+      border-color: #0F969C;
+      outline: none;
+      background-color: #000000;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2f9fa7;
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0C7075;
+    }
+    #result {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #294D61;
+      color: #ffffff;
+      font-weight: 500;
+      box-shadow: 0 0 12px rgba(13, 84, 96, 0.6);
+      text-align: left;
+    }
+    #result.error {
+      background-color: #552222;
+      color: #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter Student Details</h2>
+
+    <form id="studentForm" autocomplete="off">
+      <label for="name">STUDENTS NAME:</label>
+      <input type="text" id="name" placeholder="e.g. John Doe" required />
+
+      <label for="rollno">ROLL NO:</label>
+      <input type="text" id="rollno" placeholder="e.g. 12345" required />
+
+      <label for="department">DEPARTMENT:</label>
+      <input type="text" id="department" placeholder="e.g. Computer Science" required />
+
+      <label for="batch">BBATCH:</label>
+      <input type="text" id="batch" placeholder="e.g. 2025" required />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('studentForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const rollno = document.getElementById('rollno').value.trim();
+      const department = document.getElementById('department').value.trim();
+      const batch = document.getElementById('batch').value.trim();
+
+      if (!name || !rollno || !department || !batch) {
+        resultDiv.textContent = 'Please fill out all fields.';
+        resultDiv.classList.add('error');
+        return;
+      }
+
+      resultDiv.classList.remove('error');
+      resultDiv.innerHTML = `
+        STUDENTS NAME: ${name} <br/>
+        ROLL NUMBER: ${rollno} <br/>
+        DEPARTMENT: ${department} <br/>
+        BATCH: ${batch}
+      `;
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
